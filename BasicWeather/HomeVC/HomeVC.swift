@@ -53,9 +53,9 @@ extension HomeVC:UITableViewDelegate{
         case 0:
             return 175
         case 1:
-            return 125
+            return 160
         case 2:
-            return 175
+            return 350
         default:
          return 0
         }
