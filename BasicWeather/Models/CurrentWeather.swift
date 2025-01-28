@@ -60,3 +60,4 @@ struct CurrentWeatherSys: Codable{
     let sunrise: Int
     let sunset: Int
 }
+
