@@ -11,19 +11,19 @@ class Api{
     static let shared = Api()
     private init(){}
     
-    //MARK: - SAMPLE DATA
+    // MARK: - GENERIC FUNCTION
     
-    func fetchCurrentWeatherSample(completion: @escaping (CurrentWeather?)-> Void){
-        guard let path = Bundle.main.path(forResource: "CurrentWeather", ofType: "json") else {
+    func fetchSample<T:Decodable>(_ type: T.Type, completion:@escaping(T?)-> Void){
+        let resource = getResource(type)
+        guard let path = Bundle.main.path(forResource: resource, ofType: "json") else {
             completion(nil)
             return
         }
         let url = URL(filePath: path)
         let decoder = JSONDecoder()
-        
         do{
             let data = try Data(contentsOf: url)
-            let decodedData = try decoder.decode(CurrentWeather.self, from: data)
+            let decodedData = try decoder.decode(type, from: data)
             completion(decodedData)
             
         }catch{
@@ -32,6 +32,22 @@ class Api{
         }
         
     }
+    
+    private func getResource<T>(_ type: T.Type) -> String{
+        return switch type{
+        case is CurrentWeather.Type:
+            "CurrentWeather"
+        case is WeeklyForecast.Type:
+            "WeeklyForecast"
+        default:
+            ""
+        }
+        
+    }
+  
+
+    
+    
     //MARK: - LIVE DATA
     func fetchCurrentWeatherLive(completion: @escaping(CurrentWeather?) -> Void){
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "Api_Key") as? String else {
