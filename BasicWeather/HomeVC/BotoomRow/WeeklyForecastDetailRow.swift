@@ -24,7 +24,16 @@ class WeeklyForecastDetailRow: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    func configure(){
+    func configure(_ forecast : DailyForecast){
+        dailyLabel.text = forecast.day
+        let low = forecast.lows.average()
+        let high = forecast.highs.average()
+        minTemp.text = "\(low)"
+        maxTemp.text = "\(high)"
+        slider.minimumValue = Float(low)
+        slider.maximumValue = Float(high)
+        let average = forecast.average
+        slider.value = Float(average)
         
     }
 
