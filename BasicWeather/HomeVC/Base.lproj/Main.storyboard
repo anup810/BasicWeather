@@ -258,7 +258,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eDs-E3-8k7"/>
                     <connections>
-                        <outlet property="tableView" destination="5Qb-av-eR2" id="bAl-s3-g0t"/>
+                        <outlet property="tableView" destination="5Qb-av-eR2" id="rA9-cp-uDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -287,7 +287,7 @@
     <resources>
         <image name="sun.max" catalog="system" width="128" height="125"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

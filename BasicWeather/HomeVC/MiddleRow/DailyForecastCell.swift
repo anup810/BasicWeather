@@ -13,8 +13,10 @@ class DailyForecastCell: UICollectionViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var img: UIImageView!
     static let id = "DailyForecastCell"
-    func configure(){
+    func configure(_ item: WeeklyForecastList){
         
+        timeLabel.text = item.dt_txt
+        tempLabel.text = "\(item.main?.temp ?? 0)"
     }
     
 }
