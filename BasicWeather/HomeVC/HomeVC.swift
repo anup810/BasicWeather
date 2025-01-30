@@ -49,7 +49,9 @@ class HomeVC: UIViewController {
         
     }
 
-
+    @IBAction func didTapListButton(_ sender: UIBarButtonItem) {
+    }
+    
 }
 extension HomeVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
