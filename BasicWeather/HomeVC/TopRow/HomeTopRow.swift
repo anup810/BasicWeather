@@ -35,6 +35,13 @@ class HomeTopRow: UITableViewCell {
         let high = weather.main.temp_max
         highLowLabel.text = "L:\(low)° | H:\(high)°"
         
+        if let description = weather.weather.first?.main{
+            let weather = WeatherType(description)
+            img.image = weather.icon
+        }else {
+            img.image = nil
+        }
+        
     }
 
 }

@@ -28,13 +28,24 @@ class WeeklyForecastDetailRow: UITableViewCell {
         dailyLabel.text = forecast.day
         let low = forecast.lows.average()
         let high = forecast.highs.average()
-        minTemp.text = "\(low)"
-        maxTemp.text = "\(high)"
+        
+        let lowInt = Int(low)
+        let highInt = Int(high)
+        minTemp.text = "\(lowInt)"
+        maxTemp.text = "\(highInt)"
+        
         slider.minimumValue = Float(low)
         slider.maximumValue = Float(high)
         let average = forecast.average
         slider.value = Float(average)
         
+        if let description = forecast.description{
+            let weather = WeatherType(description)
+            img.image = weather.icon
+        }
+        else {
+            img.image = nil
+        }
     }
 
 }
