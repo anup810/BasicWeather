@@ -50,6 +50,8 @@ class HomeVC: UIViewController {
     }
 
     @IBAction func didTapListButton(_ sender: UIBarButtonItem) {
+        let vc = SearchVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
