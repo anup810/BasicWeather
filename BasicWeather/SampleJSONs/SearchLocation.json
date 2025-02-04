@@ -1,0 +1,51 @@
+
+[
+    {
+        "name": "Seattle",
+        "local_names": {
+            "lv": "Sietla",
+            "bs": "Seattle",
+            "la": "Seattlum",
+            "ja": "シアトル",
+            "lt": "Sietlas",
+            "tt": "Сиэтл",
+            "eo": "Seatlo",
+            "am": "ስያትል",
+            "kn": "ಸಿಯಾಟಲ್",
+            "zh": "西雅圖",
+            "bg": "Сиатъл",
+            "uk": "Сієтл",
+            "en": "Seattle",
+            "oc": "Seattle",
+            "be": "Сіэтл",
+            "ru": "Сиэтл",
+            "fr": "Seattle",
+            "uz": "Sietl",
+            "af": "Seattle",
+            "ar": "سياتيل، واشنطن",
+            "ko": "시애틀",
+            "ug": "Séatl"
+        },
+        "lat": 47.6038321,
+        "lon": -122.330062,
+        "country": "US",
+        "state": "Washington"
+    },
+    {
+        "name": "Seattle",
+        "lat": 20.7199684,
+        "lon": -103.3763286,
+        "country": "MX",
+        "state": "Jalisco"
+    },
+    {
+        "name": "Laurelhurst",
+        "local_names": {
+            "en": "Laurelhurst"
+        },
+        "lat": 45.5265116,
+        "lon": -122.6244677,
+        "country": "US",
+        "state": "Oregon"
+    }
+]
