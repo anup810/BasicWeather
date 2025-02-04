@@ -14,4 +14,9 @@ struct SearchLocation: Codable{
     let country: String
     let state: String?
     
+    static func == (lhs: SearchLocation, rhs: SearchLocation) -> Bool{
+        return (lhs.name == rhs.name && lhs.country == rhs.country && lhs.state == rhs.state) || (lhs.lat == rhs.lat && lhs.lon == rhs.lon)
+        
+    }
+    
 }

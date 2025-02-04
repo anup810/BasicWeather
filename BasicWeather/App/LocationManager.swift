@@ -34,13 +34,24 @@ class LocationManager {
                 
             }
         }
-      
+        
     }
     
     func appendAndSave(_ location: SearchLocation){
         locations.append(location)
         saveLocation()
         
+    }
+    
+    func delete(_ location: SearchLocation){
+        for index in 0..<locations.count{
+            guard location == locations[index] else {
+                continue
+            }
+            locations.remove(at: index)
+            saveLocation()
+            
+        }
     }
     private func saveLocation(){
         do{
