@@ -10,47 +10,66 @@ import UIKit
 class HomeVC: UIViewController {
     private var currentWeather: CurrentWeather?
     private var weeklyForecastWeather: WeeklyForecast?
+    let locationManager = LocationManager.shared
+    
     @IBOutlet private weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        Api.shared.fetchCurrentWeatherLive{ weather in
-//            guard let weather else {return}
-//            print("Recived Data")
-//            DispatchQueue.main.async { [weak self] in
-//                self?.currentWeather = weather
-//                self?.tableView.reloadData()
-//            }
-//   
-//        }
-        Api.shared.fetchSample(CurrentWeather.self) { weather in
-            guard let weather else {return}
-            DispatchQueue.main.async { [weak self] in
-                guard let self else {return}
-                currentWeather = weather
-                tableView.reloadData()
-            }
-        }
+
+        //
+        //        }
+        //        Api.shared.fetchSample(CurrentWeather.self) { weather in
+        //            guard let weather else {return}
+        //            DispatchQueue.main.async { [weak self] in
+        //                guard let self else {return}
+        //                currentWeather = weather
+        //                tableView.reloadData()
+        //            }
+        //        }
+        //
+        //        Api.shared.fetchSample(WeeklyForecast.self) { forecast in
+        //            guard let forecast else {return}
+        //            DispatchQueue.main.async {[weak self] in
+        //                guard let self else {return}
+        //                weeklyForecastWeather = forecast
+        //                tableView.reloadData()
+        //            }
+        //        }
         
-        Api.shared.fetchSample(WeeklyForecast.self) { forecast in
-            guard let forecast else {return}
-            DispatchQueue.main.async {[weak self] in
-                guard let self else {return}
-                weeklyForecastWeather = forecast
-                tableView.reloadData()
-            }
+        if let location = locationManager.getSelectedLocation(){
+            //fetch data from apis
+            fetchWeather(for: location)
+        }else{
+            let vc = SearchVC()
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
         }
-
-
+  
     }
     private func setupTableView(){
         tableView.dataSource = self
         tableView.delegate = self
         
     }
-
+    private func fetchWeather(for location: SearchLocation){
+        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
+            guard let weather else {return}
+            print("We received data hera!")
+            DispatchQueue.main.async { [weak self] in
+                guard let self else {return}
+                currentWeather = weather
+                tableView.reloadData()
+                
+            }
+        }
+        
+    }
+    
     @IBAction func didTapListButton(_ sender: UIBarButtonItem) {
         let vc = SearchVC()
+        vc.delegate = self
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -78,15 +97,15 @@ extension HomeVC:UITableViewDataSource{
         default:
             return UITableViewCell()
         }
-
-       
+        
+        
     }
     
     
 }
 extension HomeVC:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     switch indexPath.row{
+        switch indexPath.row{
         case 0:
             return 175
         case 1:
@@ -94,9 +113,19 @@ extension HomeVC:UITableViewDelegate{
         case 2:
             return 350
         default:
-         return 0
+            return 0
         }
     }
+    
+}
+
+extension HomeVC: SearchVCDelegate{
+    func didSelect(_ location: SearchLocation) {
+        //fetch data
+        fetchWeather(for: location)
+
+    }
+    
     
 }
 

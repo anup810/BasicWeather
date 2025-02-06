@@ -12,6 +12,30 @@ class LocationManager {
     private init(){}
     private let defaults = UserDefaults.standard
     
+    // Selected location for HomeVC
+    private var selectedLocation: SearchLocation?
+    func getSelectedLocation() -> SearchLocation?{
+        if let selectedLocation{
+            return selectedLocation
+        } else {
+            guard let data = defaults.object(forKey: "SelectedLocation") as? Data else {
+                return nil
+            }
+            let decoder = JSONDecoder()
+            do{
+                let decodedData = try decoder.decode(SearchLocation.self, from: data)
+                selectedLocation = decodedData
+                return selectedLocation
+                
+            }catch{
+                print(error)
+                return nil
+            }
+        }
+        
+    }
+    
+    // list of loctions for SearchVC
     private var locations:[SearchLocation] = []
     
     func getLocation() -> [SearchLocation]{
@@ -39,7 +63,7 @@ class LocationManager {
     
     func appendAndSave(_ location: SearchLocation){
         locations.append(location)
-        saveLocation()
+        saveLocations()
         
     }
     
@@ -49,11 +73,24 @@ class LocationManager {
                 continue
             }
             locations.remove(at: index)
-            saveLocation()
+            saveLocations()
             
         }
     }
-    private func saveLocation(){
+    func savedLocation(_ location: SearchLocation){
+        selectedLocation = location
+        do{
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(location)
+            defaults.set(data, forKey: "SelectedLocation")
+            
+        }catch{
+            print(error)
+        }
+        
+    }
+    
+    private func saveLocations(){
         do{
             var encoded: [Data] = []
             let encoder = JSONEncoder()
