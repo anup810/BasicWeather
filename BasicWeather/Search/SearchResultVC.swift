@@ -39,7 +39,7 @@ class SearchResultVC: UIViewController {
     func update(text: String){
         print(text)
         // Make API request to fetch city data
-        Api.shared.fetchLocation(for: text) {locations in
+        Api.shared.fetchLocation(city: text) {locations in
             guard let locations else {
                 return
             }

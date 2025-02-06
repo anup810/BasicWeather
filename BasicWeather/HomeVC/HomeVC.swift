@@ -17,26 +17,6 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         setupTableView()
 
-        //
-        //        }
-        //        Api.shared.fetchSample(CurrentWeather.self) { weather in
-        //            guard let weather else {return}
-        //            DispatchQueue.main.async { [weak self] in
-        //                guard let self else {return}
-        //                currentWeather = weather
-        //                tableView.reloadData()
-        //            }
-        //        }
-        //
-        //        Api.shared.fetchSample(WeeklyForecast.self) { forecast in
-        //            guard let forecast else {return}
-        //            DispatchQueue.main.async {[weak self] in
-        //                guard let self else {return}
-        //                weeklyForecastWeather = forecast
-        //                tableView.reloadData()
-        //            }
-        //        }
-        
         if let location = locationManager.getSelectedLocation(){
             //fetch data from apis
             fetchWeather(for: location)
@@ -53,16 +33,33 @@ class HomeVC: UIViewController {
         
     }
     private func fetchWeather(for location: SearchLocation){
-        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
-            guard let weather else {return}
-            print("We received data hera!")
-            DispatchQueue.main.async { [weak self] in
-                guard let self else {return}
-                currentWeather = weather
-                tableView.reloadData()
-                
-            }
+        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) {[weak self] weather, forecast in
+            guard let weather, let forecast ,let self else {return}
+            currentWeather = weather
+            weeklyForecastWeather = forecast
+            tableView.reloadData()
+            
+            
         }
+        
+//        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
+//            guard let weather else {return}
+//            print("We received data hera!")
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self else {return}
+//                currentWeather = weather
+//                tableView.reloadData()
+//                
+//            }
+//        }
+//        Api.shared.fetchForecast(lat: location.lat, lon: location.lon) { forecast in
+//            guard let forecast else {return}
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self else {return}
+//                weeklyForecastWeather = forecast
+//                tableView.reloadData()
+//            }
+//        }
         
     }
     
