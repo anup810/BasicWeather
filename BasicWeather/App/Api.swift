@@ -59,7 +59,7 @@ class Api{
             completion(nil)
             return
         }
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=imperial"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric"
         
         let url = URL(string: urlString)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -88,7 +88,7 @@ class Api{
             completion(nil)
             return
         }
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=\(apiKey)&units=imperial"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=\(apiKey)&units=metric"
         
         let url = URL(string: urlString)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -105,6 +105,32 @@ class Api{
                 print(error)
                 completion(nil)
                 
+            }
+        }
+        task.resume()
+        
+    }
+    func fetchLocation(for city: String , completion:@escaping([SearchLocation]?) -> Void){
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "Api_Key") as? String else {
+            print("API Key is missing")
+            completion(nil)
+            return
+        }
+        let urlString = "https://api.openweathermap.org/geo/1.0/direct?q=\(city)&limit=5&appid=\(apiKey)"
+        let url = URL(string:  urlString)!
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil, let data else {
+                completion(nil)
+                return
+            }
+            let decoder = JSONDecoder()
+            do{
+                let decodedData = try decoder.decode([SearchLocation].self, from: data)
+                completion(decodedData)
+                
+            }catch{
+                print(error)
+                completion(nil)
             }
         }
         task.resume()

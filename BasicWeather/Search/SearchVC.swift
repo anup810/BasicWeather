@@ -14,6 +14,8 @@ protocol SearchVCDelegate where Self: HomeVC{
 class SearchVC: UIViewController {
     weak var delegate: SearchVCDelegate?
     let locationManger = LocationManager.shared
+    
+    private var timer = Timer()
     private lazy var search: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultVC())
         search.searchBar.placeholder = "Search by city"
@@ -59,16 +61,20 @@ class SearchVC: UIViewController {
     }
 }
 extension SearchVC : UISearchResultsUpdating{
+    
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
             return
         }
-        let searchResult = searchController.searchResultsController as! SearchResultVC
-        searchResult.delegate = self
-        searchResult.update(text: text)
+        timer.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {[weak self] _ in
+            guard let self else {return }
+            let searchResult = searchController.searchResultsController as! SearchResultVC
+            searchResult.delegate = self
+            searchResult.update(text: text)
+            timer.invalidate()
+        }
     }
-    
-    
 }
 extension SearchVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
