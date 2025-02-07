@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Uav-PP-gtv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bex-H5-3Nl">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,13 +15,13 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeVC" customModule="BasicWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-av-eR2">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTopRow" rowHeight="175" id="FlP-na-PQa" customClass="HomeTopRow" customModule="BasicWeather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="175"/>
@@ -63,6 +64,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="8jp-uR-O1X" firstAttribute="top" secondItem="PiY-dq-57N" secondAttribute="bottom" constant="5" id="01F-pi-DZc"/>
                                                 <constraint firstItem="PiY-dq-57N" firstAttribute="centerY" secondItem="IGE-py-WTq" secondAttribute="centerY" id="4cJ-iS-WsR"/>
@@ -78,6 +80,7 @@
                                                 <constraint firstItem="8jp-uR-O1X" firstAttribute="centerX" secondItem="IGE-py-WTq" secondAttribute="centerX" id="xL9-d4-jhE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="8jp-uR-O1X" id="cCi-eu-7So"/>
                                             <outlet property="highLowLabel" destination="z6h-tw-6KZ" id="4DS-Ku-3Ya"/>
@@ -96,7 +99,7 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5vx-mE-Xzn">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4hq-UB-Tua">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -140,6 +143,7 @@
                                                                     <constraint firstItem="jQ8-ZX-h4B" firstAttribute="centerX" secondItem="duE-bR-XbD" secondAttribute="centerX" id="tcO-E5-1bd"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="customSize" width="75" height="140"/>
                                                             <connections>
                                                                 <outlet property="img" destination="z5P-p2-WhG" id="RI5-8P-99r"/>
@@ -150,7 +154,9 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="collectionView" destination="5vx-mE-Xzn" id="9b3-tm-I5E"/>
                                         </connections>
@@ -170,7 +176,7 @@
                                                 </label>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u1e-xv-mns">
                                                     <rect key="frame" x="20" y="25" width="353" height="314"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeeklyForecastDetailRow" rowHeight="87" id="px0-Tn-yuW" customClass="WeeklyForecastDetailRow" customModule="BasicWeather" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="50" width="353" height="87"/>
@@ -225,6 +231,7 @@
                                                                     <constraint firstItem="jCf-1L-wIP" firstAttribute="leading" secondItem="4dc-lG-MpM" secondAttribute="trailing" constant="2" id="vDM-wi-Cs7"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
                                                                 <outlet property="dailyLabel" destination="Aqb-Jv-hmJ" id="Xoc-g7-pze"/>
                                                                 <outlet property="img" destination="WGB-9h-b4K" id="U0b-yQ-Moq"/>
@@ -236,6 +243,7 @@
                                                     </prototypes>
                                                 </tableView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="u1e-xv-mns" firstAttribute="leading" secondItem="SZN-E9-bdL" secondAttribute="leadingMargin" id="7Jh-Yp-tNB"/>
                                                 <constraint firstItem="rMg-fg-ic2" firstAttribute="leading" secondItem="SZN-E9-bdL" secondAttribute="leadingMargin" constant="-18" id="Bbg-yM-rVD"/>
@@ -245,6 +253,7 @@
                                                 <constraint firstItem="u1e-xv-mns" firstAttribute="trailing" secondItem="SZN-E9-bdL" secondAttribute="trailingMargin" id="n1q-fg-DeN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="tableView" destination="u1e-xv-mns" id="41J-QX-DCG"/>
                                         </connections>
@@ -268,12 +277,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052.6717557251909" y="-13.380281690140846"/>
+            <point key="canvasLocation" x="1979.3893129770991" y="-13.380281690140846"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WPP-bJ-OL3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uav-PP-gtv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="sun.min" catalog="system" id="HkU-p1-JeK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7OT-2x-ah3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -286,12 +296,60 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkw-R5-cYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1057.2519083969464" y="-13.380281690140846"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Gje-0G-JtH">
+            <objects>
+                <viewController id="S4P-kS-l65" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b8L-bX-8jR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESK-b1-YZb">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZjQ-yj-5iW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZjQ-yj-5iW" firstAttribute="bottom" secondItem="ESK-b1-YZb" secondAttribute="bottom" id="B2F-jW-0XT"/>
+                            <constraint firstItem="ESK-b1-YZb" firstAttribute="leading" secondItem="ZjQ-yj-5iW" secondAttribute="leading" id="EAV-Zs-uvw"/>
+                            <constraint firstItem="ZjQ-yj-5iW" firstAttribute="trailing" secondItem="ESK-b1-YZb" secondAttribute="trailing" id="Lf4-tW-gw8"/>
+                            <constraint firstItem="ESK-b1-YZb" firstAttribute="top" secondItem="ZjQ-yj-5iW" secondAttribute="top" id="OlB-B3-suO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="XW5-lt-DPS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wrD-Sz-xIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="38"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="aBb-UB-9ps">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bex-H5-3Nl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="vR4-kS-5mO">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Uav-PP-gtv" kind="relationship" relationship="viewControllers" id="Xl1-Cr-ZwY"/>
+                        <segue destination="S4P-kS-l65" kind="relationship" relationship="viewControllers" id="pVC-O7-1Ni"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqw-1s-Qfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-13.380281690140846"/>
         </scene>
     </scenes>
     <resources>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="sun.max" catalog="system" width="128" height="125"/>
+        <image name="sun.min" catalog="system" width="128" height="123"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -8,7 +8,11 @@
 import UIKit
 
 class HomeVC: UIViewController {
-    private var currentWeather: CurrentWeather?
+    private var currentWeather: CurrentWeather? {
+        didSet{
+            setBackgroundColor(currentWeather)
+        }
+    }
     private var weeklyForecastWeather: WeeklyForecast?
     let locationManager = LocationManager.shared
     
@@ -16,7 +20,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-
+        
         if let location = locationManager.getSelectedLocation(){
             //fetch data from apis
             fetchWeather(for: location)
@@ -25,13 +29,25 @@ class HomeVC: UIViewController {
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
-  
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setBackgroundColor(currentWeather)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resetBackgroundColor()
+    }
+    
     private func setupTableView(){
         tableView.dataSource = self
         tableView.delegate = self
         
     }
+    
     private func fetchWeather(for location: SearchLocation){
         Api.shared.fetchWeather(lat: location.lat, lon: location.lon) {[weak self] weather, forecast in
             guard let weather, let forecast ,let self else {return}
@@ -42,24 +58,24 @@ class HomeVC: UIViewController {
             
         }
         
-//        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
-//            guard let weather else {return}
-//            print("We received data hera!")
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self else {return}
-//                currentWeather = weather
-//                tableView.reloadData()
-//                
-//            }
-//        }
-//        Api.shared.fetchForecast(lat: location.lat, lon: location.lon) { forecast in
-//            guard let forecast else {return}
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self else {return}
-//                weeklyForecastWeather = forecast
-//                tableView.reloadData()
-//            }
-//        }
+        //        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
+        //            guard let weather else {return}
+        //            print("We received data hera!")
+        //            DispatchQueue.main.async { [weak self] in
+        //                guard let self else {return}
+        //                currentWeather = weather
+        //                tableView.reloadData()
+        //
+        //            }
+        //        }
+        //        Api.shared.fetchForecast(lat: location.lat, lon: location.lon) { forecast in
+        //            guard let forecast else {return}
+        //            DispatchQueue.main.async { [weak self] in
+        //                guard let self else {return}
+        //                weeklyForecastWeather = forecast
+        //                tableView.reloadData()
+        //            }
+        //        }
         
     }
     
@@ -120,7 +136,7 @@ extension HomeVC: SearchVCDelegate{
     func didSelect(_ location: SearchLocation) {
         //fetch data
         fetchWeather(for: location)
-
+        
     }
     
     

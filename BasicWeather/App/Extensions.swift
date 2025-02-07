@@ -5,7 +5,7 @@
 //  Created by Anup Saud on 2025-01-29.
 //
 
-import Foundation
+import UIKit
 
 extension [Double]{
     func average() -> Double{
@@ -64,5 +64,34 @@ extension [WeeklyForecastList]{
         forecast.lows.append(item.main!.tempMin!)
         forecast.highs.append(item.main!.tempMax!)
         return forecast
+    }
+}
+
+extension UIColor{
+    static let CloudColor = UIColor(named:"CloudyBackground")!
+    static let rainColor = UIColor(named: "RainyBackground")!
+    static let snowColor = UIColor(named: "SnowyBackground")!
+    static let sunColor = UIColor(named: "SunnyBackground")!
+    static let windColor = UIColor(named: "WindyBackground")!
+}
+
+extension UIViewController{
+    func setBackgroundColor(_ weather: CurrentWeather?){
+        guard let description = weather?.weather.first?.main else {
+            resetBackgroundColor()
+            return
+        }
+        let weatherType = WeatherType(description)
+        view.backgroundColor = weatherType.background
+        navigationController?.navigationBar.barTintColor = weatherType.background
+        tabBarController?.tabBar.barTintColor = weatherType.background
+        tabBarController?.tabBar.tintColor = weatherType.tint
+    }
+    func resetBackgroundColor(){
+        view.backgroundColor = .white
+        navigationController?.navigationBar.barTintColor = .white
+        tabBarController?.tabBar.barTintColor = .white
+        tabBarController?.tabBar.tintColor = .systemBlue
+        
     }
 }
