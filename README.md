@@ -75,18 +75,13 @@ cd BasicWeather
 
 2. Open `BasicWeather.xcodeproj` in **Xcode**
 
-3. Install dependencies (if any) using:
-```bash
-pod install  # If using CocoaPods
-```
+3. Get an API Key from OpenWeather
 
-4. Get an API Key from OpenWeather
-
-5. Add your API key to **Info.plist**:
+4. Add your API key to **Info.plist**:
 ```xml
 <key>Api_Key</key>
 <string>YOUR_API_KEY_HERE</string>
 ```
 
-6. Build and run the project on a simulator or device
+5. Build and run the project on a simulator or device
 
